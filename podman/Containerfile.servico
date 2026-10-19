@@ -1,0 +1,10 @@
+# Containerfile.servico
+# Imagem usada tanto pelo servidor quanto pelo cliente do protocolo PLP.
+# Funciona identicamente com `docker build` ou `podman build`.
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY servico/ /app/
+
+# Nao define CMD fixo: o comando (servidor.py ou cliente.py) e passado
+# explicitamente no `podman run`, conforme o README/executar_podman.sh.

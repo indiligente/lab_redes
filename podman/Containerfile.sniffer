@@ -1,0 +1,12 @@
+# Containerfile.sniffer
+# Imagem do interceptador passivo (VM-observador).
+# Precisa rodar como root dentro do container e com a capability
+# NET_RAW (e idealmente NET_ADMIN) concedida no `podman run`, pois
+# sniffer.py abre um raw socket (AF_PACKET/SOCK_RAW).
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY sniffer/ /app/
+
+# A imagem oficial do Python ja roda como root por padrao, o que e
+# necessario para o raw socket (nao precisa de sudo dentro do container).
