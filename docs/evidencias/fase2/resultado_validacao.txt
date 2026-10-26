@@ -1,0 +1,12 @@
+PASSOU: script de montagem, rede interna e ausencia de rota IPv4 padrao.
+MODO: normal
+PASSOU: 'Cadu'/'senha123' -> 200 OK Cadu, depois BYE
+PASSOU: 'Cadu'/'senhaErrada' -> 401 UNAUTHORIZED, depois BYE
+PASSOU: 'usuario com espaco'/'senha123' -> 400 BAD_REQUEST, depois BYE
+MODO: alteracao
+PASSOU: 'Cadu'/'senha123' -> 200 OK Goku, depois BYE
+PASSOU: 'Cadu'/'senhaErrada' -> 200 OK Goku, depois BYE
+PASSOU: 'usuario com espaco'/'senha123' -> 400 BAD_REQUEST, depois BYE
+PASSOU: oito sessoes simultaneas no Podman, cada uma alterada para Goku.
+PASSOU: cliente interativo no Podman com entrada padrao.
+PASSOU: script de limpeza; recursos da Fase 2 removidos; Fase 1 preservada.

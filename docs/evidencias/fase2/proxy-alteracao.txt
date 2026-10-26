@@ -1,0 +1,85 @@
+[proxy] Proxy PLP em 0.0.0.0:8888 -> servidor 192.168.201.11:9999
+[proxy] Modo: alteracao de LOGIN
+[192.168.201.5:33150] Cliente conectado
+[192.168.201.5:33150] ALTERACAO: original=b'LOGIN Cadu senha123\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.5:33150] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.5:33150] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.5:33150] cliente -> servidor: b'QUIT\n'
+[192.168.201.5:33150] servidor -> cliente: b'BYE\n'
+[192.168.201.5:33150] Sessao encerrada
+[192.168.201.6:37594] Cliente conectado
+[192.168.201.6:37594] ALTERACAO: original=b'LOGIN Cadu senhaErrada\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.6:37594] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.6:37594] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.6:37594] cliente -> servidor: b'QUIT\n'
+[192.168.201.6:37594] servidor -> cliente: b'BYE\n'
+[192.168.201.6:37594] Sessao encerrada
+[192.168.201.7:57534] Cliente conectado
+[192.168.201.7:57534] cliente -> servidor: b'LOGIN usuario com espaco senha123\n'
+[192.168.201.7:57534] servidor -> cliente: b'400 BAD_REQUEST\n'
+[192.168.201.7:57534] cliente -> servidor: b'QUIT\n'
+[192.168.201.7:57534] servidor -> cliente: b'BYE\n'
+[192.168.201.7:57534] Sessao encerrada
+[192.168.201.8:50250] Cliente conectado
+[192.168.201.8:50250] ALTERACAO: original=b'LOGIN original0 senha0\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.8:50250] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.8:50252] Cliente conectado
+[192.168.201.8:50250] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.8:50258] Cliente conectado
+[192.168.201.8:50264] Cliente conectado
+[192.168.201.8:50252] ALTERACAO: original=b'LOGIN original1 senha1\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.8:50252] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.8:50278] Cliente conectado
+[192.168.201.8:50258] ALTERACAO: original=b'LOGIN original3 senha3\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.8:50258] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.8:50284] Cliente conectado
+[192.168.201.8:50264] ALTERACAO: original=b'LOGIN original5 senha5\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.8:50252] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.8:50278] ALTERACAO: original=b'LOGIN original2 senha2\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.8:50278] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.8:50306] Cliente conectado
+[192.168.201.8:50258] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.8:50300] Cliente conectado
+[192.168.201.8:50264] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.8:50278] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.8:50284] ALTERACAO: original=b'LOGIN original7 senha7\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.8:50306] ALTERACAO: original=b'LOGIN original6 senha6\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.8:50306] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.8:50284] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.8:50300] ALTERACAO: original=b'LOGIN original4 senha4\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.8:50300] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.8:50264] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.8:50284] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.8:50306] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.8:50300] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.8:50300] cliente -> servidor: b'QUIT\n'
+[192.168.201.8:50264] cliente -> servidor: b'QUIT\n'
+[192.168.201.8:50258] cliente -> servidor: b'QUIT\n'
+[192.168.201.8:50300] servidor -> cliente: b'BYE\n'
+[192.168.201.8:50264] servidor -> cliente: b'BYE\n'
+[192.168.201.8:50306] cliente -> servidor: b'QUIT\n'
+[192.168.201.8:50278] cliente -> servidor: b'QUIT\n'
+[192.168.201.8:50252] cliente -> servidor: b'QUIT\n'
+[192.168.201.8:50264] Sessao encerrada
+[192.168.201.8:50306] servidor -> cliente: b'BYE\n'
+[192.168.201.8:50258] servidor -> cliente: b'BYE\n'
+[192.168.201.8:50300] Sessao encerrada
+[192.168.201.8:50258] Sessao encerrada
+[192.168.201.8:50284] cliente -> servidor: b'QUIT\n'
+[192.168.201.8:50278] servidor -> cliente: b'BYE\n'
+[192.168.201.8:50252] servidor -> cliente: b'BYE\n'
+[192.168.201.8:50306] Sessao encerrada
+[192.168.201.8:50250] cliente -> servidor: b'QUIT\n'
+[192.168.201.8:50284] servidor -> cliente: b'BYE\n'
+[192.168.201.8:50278] Sessao encerrada
+[192.168.201.8:50252] Sessao encerrada
+[192.168.201.8:50284] Sessao encerrada
+[192.168.201.8:50250] servidor -> cliente: b'BYE\n'
+[192.168.201.8:50250] Sessao encerrada
+[192.168.201.9:40916] Cliente conectado
+[192.168.201.9:40916] ALTERACAO: original=b'LOGIN Cadu senha123\n' modificada=b'LOGIN Goku testeteste\n'
+[192.168.201.9:40916] cliente -> servidor: b'LOGIN Goku testeteste\n'
+[192.168.201.9:40916] servidor -> cliente: b'200 OK Goku\n'
+[192.168.201.9:40916] cliente -> servidor: b'QUIT\n'
+[192.168.201.9:40916] servidor -> cliente: b'BYE\n'
+[192.168.201.9:40916] Sessao encerrada

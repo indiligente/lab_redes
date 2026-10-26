@@ -1,0 +1,12 @@
+{
+  "data": "2026-10-26",
+  "ambiente": "Podman rootless; lab-net-fase2; 192.168.201.0/24",
+  "podman": "podman version 6.1.4",
+  "sha256": {
+    "servico/cliente.py": "321199d105ce9bfe2099464c7a913c471790710fedc8dc73978af0f3f5e34594",
+    "servico/servidor.py": "dfc410d24dd5ac076c83c24d0bf0b7f0d433c2a07fcda42138fae18adbf44201",
+    "servico/protocolo.py": "3e0efa7b5839e5d4a9b33af594481e4a6b8b562eeaff6bfc1e7270d41d1f9a07",
+    "proxy/proxy.py": "88e80698e1f61f13b72fd7bbf6a95cbc0d5e627207399a291d58bd124a378834",
+    "podman/executar_fase2.sh": "8d45d6f01e58e9ae8c82d2bc5b66d98a1f0efb047db5ea0760790c7af829e94d"
+  }
+}

@@ -38,16 +38,18 @@ def main():
         print(f"Conectando a {ip_servidor}:{porta} ...")
         cliente.connect((ip_servidor, porta))
 
-        msg = montar_login(usuario, senha)
-        print(f"Enviando (texto claro): {msg!r}")
-        cliente.sendall(msg)
+        # O buffer preserva os dados entre leituras ate completar cada linha.
+        with cliente.makefile("r", encoding="utf-8", errors="replace") as respostas:
+            msg = montar_login(usuario, senha)
+            print(f"Enviando (texto claro): {msg!r}")
+            cliente.sendall(msg)
 
-        resposta = cliente.recv(4096).decode("utf-8", errors="replace")
-        print(f"Resposta do servidor: {resposta.strip()}")
+            resposta = respostas.readline()
+            print(f"Resposta do servidor: {resposta.strip()}")
 
-        cliente.sendall(montar_quit())
-        bye = cliente.recv(4096).decode("utf-8", errors="replace")
-        print(f"Servidor: {bye.strip()}")
+            cliente.sendall(montar_quit())
+            bye = respostas.readline()
+            print(f"Servidor: {bye.strip()}")
 
 
 if __name__ == "__main__":

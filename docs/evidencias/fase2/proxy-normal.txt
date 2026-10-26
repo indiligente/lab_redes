@@ -1,0 +1,20 @@
+[proxy] Proxy PLP em 0.0.0.0:8888 -> servidor 192.168.201.11:9999
+[proxy] Modo: encaminhamento normal
+[192.168.201.2:46836] Cliente conectado
+[192.168.201.2:46836] cliente -> servidor: b'LOGIN Cadu senha123\n'
+[192.168.201.2:46836] servidor -> cliente: b'200 OK Cadu\n'
+[192.168.201.2:46836] cliente -> servidor: b'QUIT\n'
+[192.168.201.2:46836] servidor -> cliente: b'BYE\n'
+[192.168.201.2:46836] Sessao encerrada
+[192.168.201.3:48612] Cliente conectado
+[192.168.201.3:48612] cliente -> servidor: b'LOGIN Cadu senhaErrada\n'
+[192.168.201.3:48612] servidor -> cliente: b'401 UNAUTHORIZED\n'
+[192.168.201.3:48612] cliente -> servidor: b'QUIT\n'
+[192.168.201.3:48612] servidor -> cliente: b'BYE\n'
+[192.168.201.3:48612] Sessao encerrada
+[192.168.201.4:36172] Cliente conectado
+[192.168.201.4:36172] cliente -> servidor: b'LOGIN usuario com espaco senha123\n'
+[192.168.201.4:36172] servidor -> cliente: b'400 BAD_REQUEST\n'
+[192.168.201.4:36172] cliente -> servidor: b'QUIT\n'
+[192.168.201.4:36172] servidor -> cliente: b'BYE\n'
+[192.168.201.4:36172] Sessao encerrada

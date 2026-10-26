@@ -1,0 +1,14 @@
+Conectando a 192.168.201.12:8888 ...
+Enviando (texto claro): b'LOGIN Cadu senha123\n'
+Resposta do servidor: 200 OK Cadu
+Servidor: BYE
+
+Conectando a 192.168.201.12:8888 ...
+Enviando (texto claro): b'LOGIN Cadu senhaErrada\n'
+Resposta do servidor: 401 UNAUTHORIZED
+Servidor: BYE
+
+Conectando a 192.168.201.12:8888 ...
+Enviando (texto claro): b'LOGIN usuario com espaco senha123\n'
+Resposta do servidor: 400 BAD_REQUEST
+Servidor: BYE

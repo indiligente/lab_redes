@@ -21,6 +21,9 @@ env/
 *.pcap
 *.pcapng
 
+# Evidencias didaticas da Fase 2, somente com contas de teste.
+!docs/evidencias/fase2/*.pcap
+
 # Arquivos temporarios do sistema e dos editores
 .DS_Store
 Thumbs.db

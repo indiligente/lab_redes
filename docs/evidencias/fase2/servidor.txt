@@ -1,0 +1,60 @@
+[2026-10-26 14:00:53] Servidor PLP escutando em 0.0.0.0:9999
+[2026-10-26 14:00:53] Usuarios cadastrados (apenas para teste): ['Cadu', 'Goku', 'Gohan']
+[2026-10-26 14:00:55] Nova conexao de 192.168.201.12:42614
+[2026-10-26 14:00:55]   -> tentativa de LOGIN recebida: usuario='Cadu' senha='senha123'
+[2026-10-26 14:00:55]   -> autenticacao OK para 'Cadu'
+[2026-10-26 14:00:55]   -> cliente 192.168.201.12:42614 pediu QUIT
+[2026-10-26 14:00:56] Nova conexao de 192.168.201.12:42620
+[2026-10-26 14:00:56]   -> tentativa de LOGIN recebida: usuario='Cadu' senha='senhaErrada'
+[2026-10-26 14:00:56]   -> autenticacao FALHOU para 'Cadu'
+[2026-10-26 14:00:56]   -> cliente 192.168.201.12:42620 pediu QUIT
+[2026-10-26 14:00:56] Nova conexao de 192.168.201.12:42626
+[2026-10-26 14:00:56]   -> requisicao LOGIN malformada: 'LOGIN usuario com espaco senha123'
+[2026-10-26 14:00:56]   -> cliente 192.168.201.12:42626 pediu QUIT
+[2026-10-26 14:01:00] Nova conexao de 192.168.201.12:42640
+[2026-10-26 14:01:00]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:00]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:00]   -> cliente 192.168.201.12:42640 pediu QUIT
+[2026-10-26 14:01:01] Nova conexao de 192.168.201.12:42644
+[2026-10-26 14:01:01]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:01]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:01]   -> cliente 192.168.201.12:42644 pediu QUIT
+[2026-10-26 14:01:01] Nova conexao de 192.168.201.12:42652
+[2026-10-26 14:01:01]   -> requisicao LOGIN malformada: 'LOGIN usuario com espaco senha123'
+[2026-10-26 14:01:01]   -> cliente 192.168.201.12:42652 pediu QUIT
+[2026-10-26 14:01:02] Nova conexao de 192.168.201.12:42658
+[2026-10-26 14:01:02]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:02]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:02] Nova conexao de 192.168.201.12:42662
+[2026-10-26 14:01:02] Nova conexao de 192.168.201.12:42664
+[2026-10-26 14:01:02]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:02]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:02] Nova conexao de 192.168.201.12:42680
+[2026-10-26 14:01:02] Nova conexao de 192.168.201.12:42682
+[2026-10-26 14:01:02]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:02]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:02]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:02]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:02] Nova conexao de 192.168.201.12:42696
+[2026-10-26 14:01:02]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:02]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:02] Nova conexao de 192.168.201.12:42710[2026-10-26 14:01:02]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:02]   -> autenticacao OK para 'Goku'
+
+[2026-10-26 14:01:02]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:02] Nova conexao de 192.168.201.12:42722
+[2026-10-26 14:01:02]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:02]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:02]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:02]   -> cliente 192.168.201.12:42722 pediu QUIT
+[2026-10-26 14:01:02]   -> cliente 192.168.201.12:42680 pediu QUIT
+[2026-10-26 14:01:02]   -> cliente 192.168.201.12:42664 pediu QUIT
+[2026-10-26 14:01:02]   -> cliente 192.168.201.12:42710 pediu QUIT
+[2026-10-26 14:01:02]   -> cliente 192.168.201.12:42682 pediu QUIT
+[2026-10-26 14:01:02]   -> cliente 192.168.201.12:42662 pediu QUIT
+[2026-10-26 14:01:02]   -> cliente 192.168.201.12:42696 pediu QUIT
+[2026-10-26 14:01:02]   -> cliente 192.168.201.12:42658 pediu QUIT
+[2026-10-26 14:01:03] Nova conexao de 192.168.201.12:46594
+[2026-10-26 14:01:03]   -> tentativa de LOGIN recebida: usuario='Goku' senha='testeteste'
+[2026-10-26 14:01:03]   -> autenticacao OK para 'Goku'
+[2026-10-26 14:01:03]   -> cliente 192.168.201.12:46594 pediu QUIT

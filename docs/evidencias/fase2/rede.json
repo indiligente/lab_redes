@@ -1,0 +1,37 @@
+[
+     {
+          "name": "lab-net-fase2",
+          "id": "58fa281ff49c6251d855ee2bc288b8d1ea37680dadb04f57957d7975a0f490d2",
+          "driver": "bridge",
+          "network_interface": "podman4",
+          "created": "2026-10-26T14:00:52.543211618Z",
+          "subnets": [
+               {
+                    "subnet": "192.168.201.0/24",
+                    "gateway": "192.168.201.1"
+               }
+          ],
+          "ipv6_enabled": false,
+          "internal": true,
+          "dns_enabled": true,
+          "ipam_options": {
+               "driver": "host-local"
+          },
+          "containers": {
+               "70926903419a5df3cd9f7faaa52b3adaee2ba6e09287175ba30580df3b9fef68": {
+                    "name": "servidor-fase2",
+                    "interfaces": {
+                         "eth0": {
+                              "subnets": [
+                                   {
+                                        "ipnet": "192.168.201.11/24",
+                                        "gateway": "192.168.201.1"
+                                   }
+                              ],
+                              "mac_address": "fe:2d:df:0e:c3:3c"
+                         }
+                    }
+               }
+          }
+     }
+]
