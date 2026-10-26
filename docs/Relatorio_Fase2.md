@@ -16,7 +16,7 @@ O proxy foi desenvolvido em Python com sockets TCP e atende múltiplas conexões
 
 Foi utilizado **Podman**. Nesta fase, cliente, proxy e servidor executam em containers com identidades de rede próprias.
 
-**Rede:** `lab-net-fase2`, uma bridge interna na sub-rede `192.168.201.0/24`, criada com `--internal`. Na validação, foi conferido `internal: true` e verificada a ausência de rota IPv4 padrão no servidor. Essa configuração restringe acesso externo; não representa isolamento absoluto do host. Nenhuma porta é publicada no host.
+**Rede:** `lab-net-fase2`, uma bridge interna na sub-rede `192.168.201.0/24`, criada com `--internal`. Na validação, foi conferido `internal: true` e verificada a ausência de rota IPv4 padrão no servidor. Essa configuração restringe acesso externo; não representa isolamento absoluto do host. A interface gráfica publica somente `127.0.0.1:3001` no host; o tráfego PLP permanece interno.
 
 | Nó | Papel | Container | IP na `lab-net-fase2` | Observação |
 |---|---|---|---|---|
@@ -27,6 +27,8 @@ Foi utilizado **Podman**. Nesta fase, cliente, proxy e servidor executam em cont
 ### 2.1 Por que o cliente se conecta ao proxy
 
 O redirecionamento é realizado configurando o destino do cliente, conforme permitido pelo enunciado. Em vez de conectar diretamente ao servidor, o cliente conecta ao endereço do proxy. O proxy recebe essa conexão e abre uma segunda conexão TCP com o servidor verdadeiro.
+
+No requisito 1 da Fase 2, o enunciado especifica: “O redirecionamento do tráfego para o proxy deve ser feito por configuração do próprio serviço, por exemplo, apontando o cliente ao proxy.” Essa é a estratégia adotada; não há exigência de ARP/DNS spoofing.
 
 ```text
 Cliente → 192.168.201.12:8888 (proxy) → 192.168.201.11:9999 (servidor)
@@ -54,14 +56,24 @@ Em outro terminal, inicie o proxy com a alteração ativada e credenciais de sub
 
 ```bash
 podman run -it --rm --name proxy-fase2 \
-  --network lab-net-fase2 --ip 192.168.201.12 \
+  --network lab-net-fase2 --ip 192.168.201.12 -p 127.0.0.1:3001:3001 \
   lab-proxy python3 -u proxy.py 0.0.0.0 8888 192.168.201.11 9999 \
   --alterar --usuario Goku --senha testeteste
 ```
 
 Para escolher as credenciais pelo terminal, mantenha `--alterar` e omita `--usuario` e `--senha`. As perguntas são feitas uma única vez, antes de o proxy aceitar conexões. Para o teste sem alteração, omita as três opções: `--alterar`, `--usuario` e `--senha`.
 
-Em um terceiro terminal, execute o cliente apontando para o proxy:
+Em um terceiro terminal, inicie o Wireshark com interface web:
+
+```bash
+bash podman/wireshark_fase2.sh
+```
+
+Abra `https://localhost:3001`, aceite manualmente o certificado local na primeira abertura e, na janela do Wireshark, informe o filtro `tcp port 8888 or tcp port 9999` e dê dois cliques em `eth0`. O container gráfico compartilha a rede do proxy. O Wireshark não precisa estar instalado no host. Aguarde a captura ficar ativa.
+
+Como alternativa sem interface gráfica, use `bash podman/captura_fase2.sh iniciar` antes dos clientes e `bash podman/captura_fase2.sh parar` após os testes. O atalho executa somente o `dumpcap` em um container compartilhando a rede do proxy, com o mesmo filtro. Ele grava em `docs/evidencias/capturas/fase2-DATA-HORA.pcapng` e aguarda o fechamento do arquivo ao finalizar. Não é necessário iniciar o container gráfico nessa opção. Para escolher o nome, acrescente `minha-captura.pcapng` ao comando `iniciar`.
+
+Em um quarto terminal, execute o cliente apontando para o proxy:
 
 ```bash
 podman run --rm --network lab-net-fase2 \
@@ -76,7 +88,9 @@ Goku:  testeteste
 Gohan: trabalhoLabRedes
 ```
 
-Para trocar entre os modos normal e de alteração, encerre o proxy com Ctrl+C e reinicie-o com as opções correspondentes. Ao terminar o experimento, encerre o proxy e execute:
+Após os testes, clique em **Parar**, o quadrado vermelho do Wireshark. Os pacotes permanecem disponíveis para análise. Use **Arquivo → Salvar como** e salve em `/captures/nome.pcapng`, que corresponde à pasta `docs/evidencias/capturas/` no host. Compare os fluxos cliente–proxy e proxy–servidor usando **Seguir → Fluxo TCP**, em ASCII.
+
+Para trocar entre os modos normal e de alteração, finalize e salve a captura, remova `wireshark-fase2` se estiver usando a interface gráfica, encerre o proxy com Ctrl+C e reinicie-o com as opções correspondentes. Inicie uma nova captura pela opção escolhida para cada comparação. Ao terminar o experimento, salve a captura e execute:
 
 ```bash
 bash podman/limpar_fase2.sh
@@ -307,10 +321,18 @@ tshark -r docs/evidencias/fase2/fase2-alteracao.pcap \
 
 As tabelas [pacotes-normal.tsv](evidencias/fase2/pacotes-normal.tsv) e [pacotes-alteracao.tsv](evidencias/fase2/pacotes-alteracao.tsv) preservam os números e conteúdos extraídos. Os [logs do proxy](evidencias/fase2/proxy-alteracao.txt), a [saída do cliente](evidencias/fase2/cliente-alteracao.txt) e o [log do servidor](evidencias/fase2/servidor.txt) permitem conferir a execução completa. O arquivo `manifesto.json` registra os hashes dos fontes usados naquela validação.
 
+### 5.1 Verificação pela interface web
+
+A integração gráfica também foi validada em `https://localhost:3001`: a captura foi iniciada em `eth0`, um login foi executado, a coleta foi encerrada pelo botão **Parar** e o arquivo foi salvo em `/captures`. A análise do arquivo persistido no host confirmou os oito segmentos com dados da sessão, incluindo o LOGIN original, o modificado e a resposta.
+
+![Wireshark real no navegador mostrando o fluxo TCP capturado](evidencias/fase2/wireshark-web.png)
+
+**Figura —** Registro da interface web após parar, salvar e abrir **Seguir Fluxo TCP**. A conversa do lado do cliente mostra `LOGIN Cadu senha123` e a resposta verdadeira `200 OK Goku`, seguida de QUIT/BYE. O outro fluxo contém o LOGIN modificado entregue ao servidor.
+
 ## 6. Conclusão
 
 A Fase 2 demonstrou a interceptação ativa do PLP por um proxy com sockets, redirecionamento explícito e atendimento concorrente. Foi possível ler as credenciais, substituí-las em trânsito e entregar ao cliente a resposta verdadeira de autenticação da conta modificada, sem detecção criptográfica da adulteração.
 
 Os logs e a captura confirmaram a troca de Cadu por Goku e o processamento da mensagem alterada pelo servidor. Os testes também verificaram que falhas e mensagens malformadas são tratadas por sessão, permitindo a continuidade dos demais atendimentos.
 
-A demonstração evidencia a falta de integridade das mensagens e de autenticação do servidor no cliente. Ela utiliza contas conhecidas de teste e não elimina a verificação de senha do serviço. O fluxo implementado é específico ao modelo de requisição/resposta do PLP; a proteção do canal pertence à fase de defesa. A explicação das funções e decisões de implementação permanece no [guia do código](Guia_do_codigo.md).
+A demonstração evidencia a falta de integridade das mensagens e de autenticação do servidor no cliente. Ela utiliza contas conhecidas de teste e não elimina a verificação de senha do serviço. O fluxo implementado é específico ao modelo de requisição/resposta do PLP; a proteção do canal pertence à fase de defesa.
