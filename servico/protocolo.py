@@ -25,8 +25,6 @@ trabalho de Laboratorio de Redes de Computadores.
 HOST_PADRAO = "0.0.0.0"
 PORTA_PADRAO = 9999
 
-# "Base de usuarios" do servidor - apenas para fins didaticos.
-# Em um sistema real, senhas NUNCA deveriam ficar em texto claro
 # nem no codigo nem em transito (isso e justamente o que a Fase 3
 # vai corrigir).
 USUARIOS = {
